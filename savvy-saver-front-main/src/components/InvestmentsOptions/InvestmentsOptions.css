@@ -1,0 +1,7 @@
+.investments-options-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 110px;
+  width: 1212px;
+  height: 483px;
+}
