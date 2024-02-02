@@ -14,6 +14,9 @@ html {
 .app-container {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   /* background-color: red; */
 }
 
@@ -21,8 +24,7 @@ html {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  padding: 20px;
-  padding: 42px 82px;
+  padding: 42px 0;
 }
 
 .menu-header {
@@ -31,7 +33,6 @@ html {
 }
 
 .currency-logo {
-  font-size: 24px;
   margin-right: 10px;
 }
 
@@ -59,4 +60,39 @@ html {
   border-bottom: 2px solid #FF5100;
   padding-bottom: 6px;
   color: #fff
+}
+
+@media only screen and (max-width: 768px) {
+
+  .app-menu {
+    padding: 42px 60px;
+  }
+
+  .currency-logo {
+    margin-right: 5px;
+    width: 68px;
+    height:68px;
+  }
+
+  .menu-links {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .app-menu {
+    padding: 38px 52px;
+  }
+
+  .currency-logo {
+    margin-right: 5px;
+    width: 48px;
+    height:48px;
+  }
+
+  .menu-links {
+    font-size: 12px;
+  }
+
 }

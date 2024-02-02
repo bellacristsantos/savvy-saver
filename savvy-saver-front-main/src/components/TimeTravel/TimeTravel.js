@@ -1,5 +1,4 @@
 import './TimeTravel.css';
-import './TimeTravel.css';
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { MagnifyingGlass, Calendar, Coins, X } from "@phosphor-icons/react";
