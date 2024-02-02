@@ -17,13 +17,11 @@ const TimeTravel = () => {
   const [investmentReturnPercentage, setInvestmentReturnPercentage] = useState(null);
 
   const yesterday = SetDateMaxLimit();
+  //USERID:977
+  //API:1279142acc0c062fffeed36b5f78c056a4b16d9bb87601d6bc0f8e6f8322042bd7fa9c91299f3074a16d461841e6186dc2
 
-
-  /*   useEffect(() => {
-
-    }) */
   async function handleTimeTravel() {
-    //time travel logic
+
     const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
     const Curinvestment = calculateCurInvestment(investmentAmount, StockData);
@@ -65,7 +63,7 @@ const TimeTravel = () => {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             placeholderText='Select a date'
-            maxDate={dayjs(yesterday).toDate('YYYY-MM-DD')}
+            maxDate={new Date(yesterday)}
             minDate={new Date('1999-01-01')}
           />
         </div>
