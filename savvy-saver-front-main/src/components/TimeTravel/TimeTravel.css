@@ -3,7 +3,6 @@
 .time-travel-container {
   display: flex;
   flex-direction: column;
-  /* padding: 0 110px; */
 }
 
 
@@ -176,7 +175,6 @@ border: none;
 @media only screen and (max-width: 768px) {
   .time-travel-container {
     padding: 0 60px;
-    /* background-color: red; */
   }
 
   .time-travel-box p {
