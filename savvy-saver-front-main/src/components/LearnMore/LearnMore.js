@@ -43,7 +43,7 @@ const LearnMore = () => {
       .then((data) => {
         const podcastUrl = data.results[0]?.collectionViewUrl;
         if (podcastUrl) {
-          window.location.href = podcastUrl;
+          window.open(podcastUrl, '_blank');
         } else {
           console.error('No podcast URL found in the Apple Podcasts API response.');
         }

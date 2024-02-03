@@ -231,7 +231,11 @@ border: none;
   }
 
   input {
-    width: 100%;
+    width: 228px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 0 8px 0 40px;
+    text-align: left;
   }
 
   .input-group .icon {
