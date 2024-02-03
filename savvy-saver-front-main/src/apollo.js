@@ -1,20 +1,19 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import dotenv from 'dotenv';
 
-dotenv.config();
+import { setContext } from '@apollo/client/link/context';
 
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_API_URI,
+  uri: 'https://api.taddy.org',
+
 });
 
 const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      'X-USER-ID': process.env.REACT_APP_USER_ID,
-      'X-API-KEY': process.env.REACT_APP_API_KEY,
+      'X-USER-ID': " ",
+      'X-API-KEY': "",
     },
   };
 });
