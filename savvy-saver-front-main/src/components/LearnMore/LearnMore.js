@@ -38,8 +38,6 @@ const LearnMore = () => {
     : [];
 
   const handleListenClick = (podcast) => {
-    console.log('Clicou no podcast:', podcast);
-
     fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(podcast.name)}&entity=podcast`)
       .then((response) => response.json())
       .then((data) => {
