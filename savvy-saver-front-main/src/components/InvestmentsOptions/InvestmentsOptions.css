@@ -1,7 +1,77 @@
-.investments-options-container {
+.content {
+  align-items: flex-end;
   display: flex;
   flex-direction: column;
-  padding: 0 110px;
-  width: 1212px;
-  height: 483px;
+  gap: 40px;
+  position: relative;
+  width: 1216px;
+}
+
+.content .div-title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content .text-wrapper {
+  color: #ffffff;
+  font-family: 'Roboto-Bold', Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44.8px;
+  text-align: center;
+}
+
+.content .grid-cards,
+.content .line {
+  display: flex;
+  gap: 32px;
+}
+
+.content .card,
+.content .card-2,
+.content .card-3 {
+  align-items: flex-start;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 171px;
+  justify-content: flex-end;
+  padding: 16px;
+  width: 384px;
+}
+
+.content .card {
+  background-color: #ea5539;
+}
+.content .card-2 {
+  background-color: #0f93c1;
+}
+.content .card-3 {
+  background-color: #4407bf;
+}
+
+.content div,
+.content p {
+  color: #ffffff;
+  font-family: 'Roboto-Regular', Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+.content div {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.content p {
+  color: #ffffffbf;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  margin-right: 0;
+  width: 364px;
 }
