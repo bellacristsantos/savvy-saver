@@ -28,30 +28,52 @@
   display: flex;
   gap: 32px;
 }
+.content .profit-info {
+  color: #fff;
+
+  font-family: Roboto;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 21px */
+}
 
 .content .card,
 .content .card-2,
 .content .card-3 {
-  align-items: flex-start;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
   display: flex;
+  padding: 30px 36px;
   flex-direction: column;
-  gap: 16px;
-  height: 171px;
-  justify-content: flex-end;
-  padding: 16px;
-  width: 384px;
+  align-items: center;
+  gap: 48px;
+  border-radius: 10px;
+  border: 1px solid #fff;
 }
 
 .content .card {
-  background-color: #ea5539;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background-color: #4407bf;
+}
+
+.card-description {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
 }
 .content .card-2 {
-  background-color: #0f93c1;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background: #0f94c1;
 }
 .content .card-3 {
-  background-color: #4407bf;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  background: #eb563a;
 }
 
 .content div,
@@ -74,4 +96,8 @@
   line-height: 25.6px;
   margin-right: 0;
   width: 364px;
+}
+
+.chart-placeholder {
+  position: relative;
 }

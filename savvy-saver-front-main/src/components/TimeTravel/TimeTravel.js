@@ -30,10 +30,10 @@ const TimeTravel = ({ setInvestmentOptions }) => {
     //time travel logic
     const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
-    let option1 = calculateBestProfit(StockData);
-    let option2 = calculateBuyAndKeep(StockData);
-    let option3 = buyOnHigh(StockData);
-    setInvestmentOptions([option1, option2, option3]);
+    let option1 = calculateBestProfit(StockData, investmentAmount);
+    let option2 = calculateBuyAndKeep(StockData, investmentAmount);
+    let option3 = buyOnHigh(StockData, investmentAmount);
+    setInvestmentOptions([option1 || {}, option2 || {}, option3 || {}]);
     const Curinvestment = calculateCurInvestment(investmentAmount, StockData);
     const investmentOnDate = calculateInvestmentOnDate(
       investmentAmount,

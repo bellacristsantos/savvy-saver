@@ -12,7 +12,7 @@ import LearnMore from './components/LearnMore/LearnMore';
 import './App.css';
 
 function App() {
-  let [investmentOtions, setInvestmentOptions] = React.useState([]);
+  let [investmentOptions, setInvestmentOptions] = React.useState([]);
   return (
     <Router>
       <div className='app-container'>
@@ -25,7 +25,9 @@ function App() {
           />
           <Route
             path='/investments-options'
-            element={<InvestmentsOptions investmentOtions={investmentOtions} />}
+            element={
+              <InvestmentsOptions investmentOptions={investmentOptions} />
+            }
           />
           <Route path='/learn-more' element={<LearnMore />} />
         </Routes>
