@@ -1,7 +1,86 @@
 .learn-more-container {
   display: flex;
   flex-direction: column;
-  padding: 0 110px;
-  width: 1212px;
-  height: 483px;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.learn-more-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.podcast-container {
+  position: relative;
+  width: 284px;
+  height: 284px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.podcast-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FF5100;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.podcast-container:hover::before {
+  opacity: 0.4;
+}
+
+.podcast-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.podcast-container:hover img {
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 768px) {
+  .learn-more-container {
+    padding: 10px;
+  }
+
+  .learn-more-items {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 5px;
+  }
+
+  .podcast-container {
+    height: 150px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .learn-more-items {
+    padding: 0 40px;
+  }
+
+  .podcast-container {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   height: 120px;
+  }
 }

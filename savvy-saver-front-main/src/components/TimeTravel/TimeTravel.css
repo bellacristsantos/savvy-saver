@@ -3,7 +3,6 @@
 .time-travel-container {
   display: flex;
   flex-direction: column;
-  padding: 0 110px;
 }
 
 
@@ -25,7 +24,6 @@
   padding: 40px 60px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  padding: 40px 60px;
   margin-top: 72px;
   justify-content: space-between;
 }
@@ -171,4 +169,77 @@ border: none;
   align-items: center;
   justify-content: center;
   margin-top: 24px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .time-travel-container {
+    padding: 0 60px;
+  }
+
+  .time-travel-box p {
+    font-size: 28px;
+    margin-top: 60px;
+  }
+
+  .time-travel-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+    margin-top: 60px;
+  }
+
+  .button-container {
+    margin-top: 60px;
+  }
+
+  button {
+    padding: 14px 38px;
+    font-size: 14px;
+  }
+
+  .input-group .icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .time-travel-box p {
+    font-size: 18px;
+    margin-top: 40px;
+  }
+
+  .time-travel-form {
+    gap: 12px;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .time-travel-box p {
+    margin-top: 20px;
+  }
+
+  .button-container {
+    margin-top: 40px;
+  }
+
+  button {
+    padding: 12px 32px;
+    font-size: 12px;
+  }
+
+  input {
+    width: 228px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 0 8px 0 40px;
+    text-align: left;
+  }
+
+  .input-group .icon {
+    width: 22px;
+    height: 22px;
+  }
 }

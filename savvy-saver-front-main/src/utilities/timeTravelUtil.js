@@ -1,18 +1,19 @@
 function calculateCurInvestment(investmentAmount, StockData) {
-  const timeSeries = StockData['Time Series (Daily)'];;
+  const timeSeries = StockData['timeSeriesDaily'];
   const lastCloseDate = Object.keys(timeSeries).sort().reverse()[0]
   const lastCloseData = timeSeries[lastCloseDate]
-  const lastClosePrice = parseFloat(lastCloseData['4. close']);
+  const lastClosePrice = parseFloat(lastCloseData['close']);
+  console.log('curprice',lastClosePrice);
   const investmentReturn = investmentAmount * lastClosePrice;
   return investmentReturn;
 }
 
 
 function calculateInvestmentOnDate(investmentAmount, StockData, investmentDate) {
-  const timeSeries = StockData['Time Series (Daily)'];
-  const dateData = timeSeries[investmentDate];
-  console.log(dateData);
-  const lastClosePriceOnDate = parseFloat(dateData['4. close'])||0;
+  console.log(investmentDate);
+  const timeSeries = StockData['timeSeriesDaily'];
+  const date = timeSeries[investmentDate];
+  const lastClosePriceOnDate = parseFloat(date['close'])||0;
   console.log(lastClosePriceOnDate);
   const investmentReturn = investmentAmount * lastClosePriceOnDate;
   return investmentReturn;
@@ -27,4 +28,11 @@ function calculateInvestmentReturn(Curinvestment, investmentOnDate) {
   return investment;
 }
 
-export { calculateCurInvestment, calculateInvestmentOnDate, calculateInvestmentReturn}
+function SetDateMaxLimit(){
+  const today = new Date();
+  const yesterday = new Date(today.setDate(today.getDate() - 1));
+  const formattedDate = yesterday.toISOString().split('T')[0];
+  return formattedDate;
+}
+
+export { calculateCurInvestment, calculateInvestmentOnDate, calculateInvestmentReturn, SetDateMaxLimit}

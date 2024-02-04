@@ -1,11 +1,10 @@
 import './TimeTravel.css';
-import './TimeTravel.css';
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import { MagnifyingGlass, Calendar, Coins, X } from "@phosphor-icons/react";
 import CurrencyInput from 'react-currency-input-field';
-import {fetchStockData} from '../../TimeTravelService';
-import { calculateCurInvestment, calculateInvestmentOnDate, calculateInvestmentReturn } from '../../utilities/timeTravelUtil';
+import { fetchStockData } from '../../TimeTravelService';
+import { SetDateMaxLimit, calculateCurInvestment, calculateInvestmentOnDate, calculateInvestmentReturn } from '../../utilities/timeTravelUtil';
 import dayjs from 'dayjs'
 
 const TimeTravel = () => {
@@ -16,17 +15,17 @@ const TimeTravel = () => {
   const [investmentReturn, setInvestmentReturn] = useState(null);
   const [investmentReturnPercentage, setInvestmentReturnPercentage] = useState(null);
 
-/*   useEffect(() => {
+  const yesterday = SetDateMaxLimit();
 
-  }) */
   async function handleTimeTravel() {
-    //time travel logic
-    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
+
+    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD')+'';
+
     const StockData = await fetchStockData(company);
     const Curinvestment = calculateCurInvestment(investmentAmount, StockData);
     const investmentOnDate = calculateInvestmentOnDate(investmentAmount, StockData, investmentDate);
     const investment = calculateInvestmentReturn(Curinvestment, investmentOnDate);
-    console.log(investment);
+    
     setInvestmentReturn(investment.investmentReturn);
     setInvestmentReturnPercentage(investment.investmentReturnPercentage);
     setShowModal(true);
@@ -62,6 +61,8 @@ const TimeTravel = () => {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             placeholderText='Select a date'
+            maxDate={new Date(yesterday)}
+            minDate={new Date('1999-01-01')}
           />
         </div>
 
