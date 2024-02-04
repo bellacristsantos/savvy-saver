@@ -1,7 +1,7 @@
 exports.SetDateMaxLimit = () => {
   const today = new Date();
-  const yesterday = new Date(today.setDate(today.getDate() - 1));
-  const formattedDate = yesterday.toISOString().split('T')[0];
+  //const yesterday = new Date(today.setDate(today.getDate() - 1));
+  const formattedDate = today.toISOString().split('T')[0];
   return formattedDate;
 }
 

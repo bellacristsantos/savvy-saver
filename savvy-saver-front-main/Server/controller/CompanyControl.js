@@ -9,8 +9,9 @@ exports.fetchAndUpdateCompanyData = async (ctx) => {
     const companyInfo = await Company.findOne({ 'metaData.symbol': companySymbol });
 
     if (companyInfo) {
-      const lastRefreshed = new Date(companyInfo.metaData.lastRefreshed).toISOString().split('T')[0];
+      const lastRefreshed = new Date(companyInfo.updatedAt).toISOString().split('T')[0];
       const yesterday = SetDateMaxLimit();
+      console.log('lastRefreshed:', lastRefreshed, 'yesterday:', yesterday);
       if (lastRefreshed === yesterday) {
         ctx.status = 200;
         ctx.body = companyInfo;

@@ -1,13 +1,15 @@
 import './TimeTravel.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { MagnifyingGlass, Calendar, Coins, X } from "@phosphor-icons/react";
 import CurrencyInput from 'react-currency-input-field';
 import { fetchStockData } from '../../TimeTravelService';
-import { SetDateMaxLimit, calculateCurInvestment, calculateInvestmentOnDate, calculateInvestmentReturn } from '../../utilities/timeTravelUtil';
+import { SetDateMaxLimit, calculateCurInvestment, } from '../../utilities/timeTravelUtil';
 import dayjs from 'dayjs'
+import LineChart from '../Chart/LineChart';
 
 const TimeTravel = () => {
+  const [ChartData, setChartData] = useState(null);
   const [company, setCompany] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
   const [investmentAmount, setInvestmentAmount] = useState(null);
@@ -15,32 +17,33 @@ const TimeTravel = () => {
   const [investmentReturn, setInvestmentReturn] = useState(null);
   const [investmentReturnPercentage, setInvestmentReturnPercentage] = useState(null);
 
+
   const yesterday = SetDateMaxLimit();
 
   async function handleTimeTravel() {
 
-    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD')+'';
-
+    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
-    const Curinvestment = calculateCurInvestment(investmentAmount, StockData);
-    const investmentOnDate = calculateInvestmentOnDate(investmentAmount, StockData, investmentDate);
-    const investment = calculateInvestmentReturn(Curinvestment, investmentOnDate);
-    
+
+    setChartData([[StockData['timeSeriesDaily']], company]);
+    const investment = calculateCurInvestment(investmentAmount, StockData,investmentDate);
     setInvestmentReturn(investment.investmentReturn);
     setInvestmentReturnPercentage(investment.investmentReturnPercentage);
     setShowModal(true);
+
   }
 
   const closeModal = () => {
     setShowModal(false);
   }
 
+
   return (
     <div className='time-travel-container' id='time-travel'>
 
       <div className="time-travel-box">
         <p>
-          Take a <span className="highlight">financial time travel</span>  journey to explore the 'what ifs' of financial choices and discover the amount you could earn from investments that you didn't make.
+          Take a <span className="highlight">financial time travel</span>  journey to explore the 'what ifs' of financial choices and discover the amount you could have earn from investments that you didn't make.
         </p>
       </div>
 
@@ -92,7 +95,7 @@ const TimeTravel = () => {
             <div className="modal-content">
               <X className='close-icon' onClick={closeModal} />
 
-              <p className='modal-text'>Your investment return would be:</p>
+              <p className='modal-text'>Your investment return would have been:</p>
 
               <div className="modal-amount">
                 <div className="result-container">
@@ -107,7 +110,15 @@ const TimeTravel = () => {
                   </p>
                 </div>
               </div>
-
+              <div className="chart-container">
+                {ChartData ? (
+                  <LineChart ChartData={ChartData} />
+                ) : (
+                  <>
+                    <p className="no-data">No data available</p>
+                  </>
+                )}
+              </div>
               <div className="modal-button">
                 <button onClick={closeModal}>
                   BACK TO REALITY
