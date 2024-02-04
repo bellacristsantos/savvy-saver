@@ -12,8 +12,8 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      'X-USER-ID': " ",
-      'X-API-KEY': "",
+      'X-USER-ID': '',
+      'X-API-KEY': '',
     },
   };
 });

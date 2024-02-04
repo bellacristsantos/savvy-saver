@@ -27,8 +27,8 @@ const TimeTravel = ({ setInvestmentOptions }) => {
   const yesterday = SetDateMaxLimit();
 
   async function handleTimeTravel() {
-    //time travel logic
-    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
+    const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD') + '';
+
     const StockData = await fetchStockData(company);
     let option1 = calculateBestProfit(StockData, investmentAmount);
     let option2 = calculateBuyAndKeep(StockData, investmentAmount);
@@ -82,7 +82,7 @@ const TimeTravel = ({ setInvestmentOptions }) => {
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
             placeholderText='Select a date'
-            maxDate={dayjs(yesterday).toDate('YYYY-MM-DD')}
+            maxDate={new Date(yesterday)}
             minDate={new Date('1999-01-01')}
           />
         </div>
