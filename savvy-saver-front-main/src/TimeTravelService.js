@@ -16,5 +16,6 @@ export async function fetchStockData(company) {
     return data;
   } catch (error) {
     console.log('FE Error', error);
+    return fakedata;
   }
 }
