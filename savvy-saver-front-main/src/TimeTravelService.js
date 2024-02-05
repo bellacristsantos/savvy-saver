@@ -1,6 +1,6 @@
 export async function fetchStockData(company) {
   const companyCaps = company.toUpperCase();
-  const URL = `http://127.0.0.1:3050/company/${companyCaps}`;
+  const URL = `http://127.0.0.1:3060/company/${companyCaps}`;
 
   try {
     const response = await fetch(URL, {

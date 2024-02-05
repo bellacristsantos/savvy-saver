@@ -24,13 +24,11 @@ const TimeTravel = () => {
 
     const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
-
     setChartData([[StockData['timeSeriesDaily']], company]);
     const investment = calculateCurInvestment(investmentAmount, StockData,investmentDate);
     setInvestmentReturn(investment.investmentReturn);
     setInvestmentReturnPercentage(investment.investmentReturnPercentage);
     setShowModal(true);
-
   }
 
   const closeModal = () => {
