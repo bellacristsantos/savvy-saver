@@ -5,7 +5,6 @@
   flex-direction: column;
 }
 
-
 .time-travel-box p {
   font-size: 42px;
   color: #fff;
@@ -14,14 +13,14 @@
 }
 
 .highlight {
-  color: #FF5100;
+  color: #ff5100;
   font-weight: bold;
 }
 
 .time-travel-form {
   display: flex;
   flex-direction: row;
-  padding: 40px 60px;
+  padding: 40px 50px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   margin-top: 72px;
@@ -30,17 +29,32 @@
 
 .input-group {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.input-group .icon {
-  color: #FF5100;
+.input-group .icon,
+.input-group .arrow-icon {
+  color: #ff5100;
   width: 32px;
   height: 32px;
   position: absolute;
-  left: 18px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+}
+
+.input-group .icon {
+  left: 18px;
+}
+
+.input-group .arrow-icon {
+  right: 18px;
+  left: auto;
+  color: rgba(255, 81, 0, 0.8);
+  width: 22px;
+  height: 22px;
 }
 
 input {
@@ -49,13 +63,17 @@ input {
   border-radius: 8px;
   padding: 0 8px 0 50px;
   position: relative;
-  color: #58585E;
+  color: #58585e;
 }
 
 input::placeholder {
   font-size: 16px;
-  color: #7C7C8A;
+  color: #7c7c8a;
   padding: 0 8px;
+}
+
+.react-datepicker-popper {
+  z-index: 1;
 }
 
 .react-datepicker {
@@ -63,7 +81,7 @@ input::placeholder {
 }
 
 .react-datepicker__header {
-  background-color: #FF5100;
+  background-color: #ff5100;
 }
 
 .react-datepicker__current-month,
@@ -77,23 +95,22 @@ input::placeholder {
 }
 
 .react-datepicker__day {
-  color: #7C7C8A;
+  color: #7c7c8a;
 }
 
 .react-datepicker__day--selected {
-  background-color: #FF5100;
+  background-color: #ff5100;
   color: #fff;
 }
 
-
 button {
-background-color: #FF5100;
-color: #fff;
-padding: 14px 40px;
-border-radius: 8px;
-font-size: 16px;
-font-weight: bold;
-border: none;
+  background-color: #ff5100;
+  color: #fff;
+  padding: 14px 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
 }
 
 .button-container {
@@ -117,14 +134,13 @@ border: none;
 }
 
 .modal {
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   border-radius: 8px;
   padding: 20px;
   text-align: center;
   position: relative;
   width: 60vw;
 }
-
 
 .close-icon {
   position: absolute;
@@ -144,7 +160,7 @@ border: none;
 
 .modal-amount {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 6px 12px;
@@ -158,11 +174,10 @@ border: none;
 }
 
 .percentage {
-  color: #007F0D;
+  color: #007f0d;
   font-size: 20px;
   font-weight: bold;
   margin-left: 24px;
-
 }
 
 .modal-button {
@@ -172,6 +187,28 @@ border: none;
   margin-top: 24px;
 }
 
+.suggestions-dropdown {
+  list-style-type: none;
+  width: 348px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: #dddddd;
+  top: 100%;
+}
+
+.suggestions-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestions-dropdown li:hover {
+  background-color: rgba(255, 81, 0, 0.8);
+}
 
 @media only screen and (max-width: 768px) {
   .time-travel-container {
