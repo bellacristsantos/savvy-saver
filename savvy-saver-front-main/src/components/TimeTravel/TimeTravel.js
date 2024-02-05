@@ -1,7 +1,7 @@
 import './TimeTravel.css';
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-import { MagnifyingGlass, Calendar, Coins, X } from '@phosphor-icons/react';
+import { MagnifyingGlass, Calendar, Coins, X, CaretDown } from '@phosphor-icons/react';
 import CurrencyInput from 'react-currency-input-field';
 import { fetchStockData } from '../../TimeTravelService';
 import {
@@ -23,6 +23,8 @@ const TimeTravel = ({ setInvestmentOptions }) => {
   const [investmentReturn, setInvestmentReturn] = useState(null);
   const [investmentReturnPercentage, setInvestmentReturnPercentage] =
     useState(null);
+  const [companySuggestions, setCompanySuggestions] = useState(['Apple', 'Meta', 'Amazon', 'Tesla', 'Microsoft', 'Intel']);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const yesterday = SetDateMaxLimit();
 
@@ -51,6 +53,19 @@ const TimeTravel = ({ setInvestmentOptions }) => {
     setShowModal(true);
   }
 
+  const handleSearch = () => {
+    //handleSearch logic
+  }
+
+  const handleIconClick = () => {
+    setDropdownVisible(!dropdownVisible);
+  }
+
+  const handleSuggestionClick = (selectedcompany) => {
+    setCompany(selectedcompany);
+    setDropdownVisible(false);
+  }
+
   const closeModal = () => {
     setShowModal(false);
   };
@@ -70,10 +85,29 @@ const TimeTravel = ({ setInvestmentOptions }) => {
           <MagnifyingGlass className='icon' />
           <input
             type='text'
+            id='companyInput'
             placeholder='Search for a company'
             value={company}
-            onChange={(e) => setCompany(e.target.value)}
+            onChange={(e) => {
+              setCompany(e.target.value);
+              handleSearch(e.target.value);
+              }}
+              onFocus={() => setDropdownVisible(true)}
+              onBlur={() => {
+                setTimeout(() => setDropdownVisible(false), 100);
+              }}
+
           />
+          {dropdownVisible && companySuggestions.length > 0 && (
+            <ul className='suggestions-dropdown'>
+              {companySuggestions.map((suggestion) => (
+                <li key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+          )}
+          <CaretDown className='arrow-icon' onClick={handleIconClick}/>
         </div>
 
         <div className='input-group'>

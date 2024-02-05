@@ -21,7 +21,7 @@
 .time-travel-form {
   display: flex;
   flex-direction: row;
-  padding: 40px 60px;
+  padding: 40px 50px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   margin-top: 72px;
@@ -30,17 +30,32 @@
 
 .input-group {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.input-group .icon {
+.input-group .icon,
+.input-group .arrow-icon {
   color: #FF5100;
   width: 32px;
   height: 32px;
   position: absolute;
-  left: 18px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+}
+
+.input-group .icon {
+  left: 18px;
+}
+
+.input-group .arrow-icon {
+  right: 18px;
+  left: auto;
+  color: rgba(255, 81, 0, 0.8);
+  width: 22px;
+  height: 22px;
 }
 
 input {
@@ -56,6 +71,10 @@ input::placeholder {
   font-size: 16px;
   color: #7C7C8A;
   padding: 0 8px;
+}
+
+.react-datepicker-popper {
+  z-index: 1;
 }
 
 .react-datepicker {
@@ -171,6 +190,29 @@ border: none;
   margin-top: 24px;
 }
 
+.suggestions-dropdown {
+  list-style-type:none;
+  width: 348px;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: #DDDDDD;
+  top: 100%;
+}
+
+.suggestions-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.suggestions-dropdown li:hover {
+  background-color: rgba(255, 81, 0, 0.8);
+}
+
 
 @media only screen and (max-width: 768px) {
   .time-travel-container {
@@ -243,3 +285,4 @@ border: none;
     height: 22px;
   }
 }
+
