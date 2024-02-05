@@ -10,7 +10,7 @@ app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const port = process.env.PORT || 3060;
+const port = process.env.PORT || 8020;
 
 (async () => app.listen(port, async () => {
   try {

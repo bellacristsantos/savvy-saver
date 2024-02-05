@@ -161,9 +161,9 @@ function buyOnHigh(StockData, amount) {
 }
 
 export {
+  getClosingPrices,
   calculateCurInvestment,
   calculateInvestmentOnDate,
-  calculateInvestmentReturn,
   SetDateMaxLimit,
   calculateBestProfit,
   calculateBuyAndKeep,

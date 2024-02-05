@@ -4,31 +4,21 @@ import DatePicker from 'react-datepicker';
 import { MagnifyingGlass, Calendar, Coins, X } from '@phosphor-icons/react';
 import CurrencyInput from 'react-currency-input-field';
 import { fetchStockData } from '../../TimeTravelService';
-import {
-  SetDateMaxLimit,
-  calculateCurInvestment,
-  calculateInvestmentOnDate,
-  calculateInvestmentReturn,
-  calculateBuyAndKeep,
-  calculateBestProfit,
-  buyOnHigh,
-} from '../../utilities/timeTravelUtil';
+import {SetDateMaxLimit,calculateCurInvestment,calculateBuyAndKeep,calculateBestProfit,buyOnHigh,} from '../../utilities/timeTravelUtil';
+import LineChart from '../Chart/LineChart';
 import dayjs from 'dayjs';
 
 const TimeTravel = ({ setInvestmentOptions }) => {
+  const [ChartData, setChartData] = useState(null);
   const [company, setCompany] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
   const [investmentAmount, setInvestmentAmount] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [investmentReturn, setInvestmentReturn] = useState(null);
-  const [investmentReturnPercentage, setInvestmentReturnPercentage] =
-    useState(null);
-
-
+  const [investmentReturnPercentage, setInvestmentReturnPercentage] =useState(null);
   const yesterday = SetDateMaxLimit();
 
   async function handleTimeTravel() {
-
     const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
     setChartData([[StockData['timeSeriesDaily']], company]);
@@ -36,13 +26,10 @@ const TimeTravel = ({ setInvestmentOptions }) => {
     setInvestmentReturn(investment.investmentReturn);
     setInvestmentReturnPercentage(investment.investmentReturnPercentage);
 
-    let option1 = calculateBestProfit(StockData, investmentAmount);
+/*     let option1 = calculateBestProfit(StockData, investmentAmount);
     let option2 = calculateBuyAndKeep(StockData, investmentAmount);
     let option3 = buyOnHigh(StockData, investmentAmount);
-    setInvestmentOptions([option1 || {}, option2 || {}, option3 || {}]);
-
-    setInvestmentReturn(investment?.investmentReturn);
-    setInvestmentReturnPercentage(investment?.investmentReturnPercentage);
+    setInvestmentOptions([option1 || {}, option2 || {}, option3 || {}]); */
     setShowModal(true);
   }
 
@@ -105,13 +92,12 @@ const TimeTravel = ({ setInvestmentOptions }) => {
             <div className='modal-content'>
               <X className='close-icon' onClick={closeModal} />
 
-              <p className='modal-text'>Your investment return would be:</p>
+              <p className='modal-text'>Your investment return would have been:</p>
               {investmentReturn && investmentReturnPercentage ? (
                 <div className='modal-amount'>
                   <div className='result-container'>
                     <p className='result'>${investmentReturn.toFixed(0)} USD</p>
                   </div>
-
                   <div className='percentage-container'>
                     <p className='percentage'>
                       {investmentReturnPercentage.toFixed(2)}%
@@ -123,10 +109,6 @@ const TimeTravel = ({ setInvestmentOptions }) => {
                   No data available for the selected date / API is overused
                 </p>
               )}
-
-              <div className='modal-button'>
-                <button onClick={closeModal}>BACK TO REALITY</button>
-              </div>
               <div className="chart-container">
                 {ChartData ? (
                   <LineChart ChartData={ChartData} />
