@@ -4,7 +4,13 @@ import DatePicker from 'react-datepicker';
 import { MagnifyingGlass, Calendar, Coins, X } from '@phosphor-icons/react';
 import CurrencyInput from 'react-currency-input-field';
 import { fetchStockData } from '../../TimeTravelService';
-import {SetDateMaxLimit,calculateCurInvestment,calculateBuyAndKeep,calculateBestProfit,buyOnHigh,} from '../../utilities/timeTravelUtil';
+import {
+  SetDateMaxLimit,
+  calculateCurInvestment,
+  calculateBuyAndKeep,
+  calculateBestProfit,
+  buyOnHigh,
+} from '../../utilities/timeTravelUtil';
 import LineChart from '../Chart/LineChart';
 import dayjs from 'dayjs';
 
@@ -15,21 +21,32 @@ const TimeTravel = ({ setInvestmentOptions }) => {
   const [investmentAmount, setInvestmentAmount] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [investmentReturn, setInvestmentReturn] = useState(null);
-  const [investmentReturnPercentage, setInvestmentReturnPercentage] =useState(null);
+  const [investmentReturnPercentage, setInvestmentReturnPercentage] =
+    useState(null);
   const yesterday = SetDateMaxLimit();
 
   async function handleTimeTravel() {
     const investmentDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const StockData = await fetchStockData(company);
     setChartData([[StockData['timeSeriesDaily']], company]);
-    const investment = calculateCurInvestment(investmentAmount, StockData,investmentDate);
+    const investment = calculateCurInvestment(
+      investmentAmount,
+      StockData,
+      investmentDate,
+    );
     setInvestmentReturn(investment.investmentReturn);
     setInvestmentReturnPercentage(investment.investmentReturnPercentage);
 
-/*     let option1 = calculateBestProfit(StockData, investmentAmount);
-    let option2 = calculateBuyAndKeep(StockData, investmentAmount);
-    let option3 = buyOnHigh(StockData, investmentAmount);
-    setInvestmentOptions([option1 || {}, option2 || {}, option3 || {}]); */
+    let option1 = calculateBestProfit(
+      StockData['timeSeriesDaily'],
+      investmentAmount,
+    );
+    let option2 = calculateBuyAndKeep(
+      StockData['timeSeriesDaily'],
+      investmentAmount,
+    );
+    let option3 = buyOnHigh(StockData['timeSeriesDaily'], investmentAmount);
+    setInvestmentOptions([option1 || {}, option2 || {}, option3 || {}]);
     setShowModal(true);
   }
 
@@ -37,12 +54,13 @@ const TimeTravel = ({ setInvestmentOptions }) => {
     setShowModal(false);
   };
 
-
   return (
     <div className='time-travel-container' id='time-travel'>
       <div className='time-travel-box'>
         <p>
-          Take a <span className="highlight">financial time travel</span>  journey to explore the 'what ifs' of financial choices and discover the amount you could have earn from investments that you didn't make.
+          Take a <span className='highlight'>financial time travel</span>{' '}
+          journey to explore the 'what ifs' of financial choices and discover
+          the amount you could have earn from investments that you didn't make.
         </p>
       </div>
 
@@ -92,7 +110,9 @@ const TimeTravel = ({ setInvestmentOptions }) => {
             <div className='modal-content'>
               <X className='close-icon' onClick={closeModal} />
 
-              <p className='modal-text'>Your investment return would have been:</p>
+              <p className='modal-text'>
+                Your investment return would have been:
+              </p>
               {investmentReturn && investmentReturnPercentage ? (
                 <div className='modal-amount'>
                   <div className='result-container'>
@@ -109,21 +129,18 @@ const TimeTravel = ({ setInvestmentOptions }) => {
                   No data available for the selected date / API is overused
                 </p>
               )}
-              <div className="chart-container">
+              <div className='chart-container'>
                 {ChartData ? (
                   <LineChart ChartData={ChartData} />
                 ) : (
                   <>
-                    <p className="no-data">No data available</p>
+                    <p className='no-data'>No data available</p>
                   </>
                 )}
               </div>
-              <div className="modal-button">
-                <button onClick={closeModal}>
-                  BACK TO REALITY
-                </button>
+              <div className='modal-button'>
+                <button onClick={closeModal}>BACK TO REALITY</button>
               </div>
-
             </div>
           </div>
         </div>

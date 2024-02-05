@@ -138,7 +138,7 @@ export const InvestmentOptions = ({
           )}
 
           {buyAndKeep && (
-            <div className='card'>
+            <div className='card-2'>
               <div className='card-header'>Historical Growth Gauge</div>
               <p className='card-description'>
                 This measures the long-term growth potential by analyzing past
@@ -170,7 +170,7 @@ export const InvestmentOptions = ({
             </div>
           )}
           {buyOnHigh && (
-            <div className='card'>
+            <div className='card-3'>
               <div className='card-header'>Peak Price Perspective</div>
               <p className='card-description'>
                 Focuses on the strategy of buying at historical highs under the
