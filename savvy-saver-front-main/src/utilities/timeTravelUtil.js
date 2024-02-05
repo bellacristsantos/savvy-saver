@@ -61,6 +61,111 @@ function getClosingPrices(chartData) {
   return Data;
 }
 
+/* export { getClosingPrices,calculateCurInvestment, calculateInvestmentOnDate, SetDateMaxLimit } */
 
+function calculateBestProfit(StockData, amount) {
+  let listObject = StockData['Time Series (Daily)'];
+  let min = null;
+  let max = null;
+  let bestProfitCombinations = [];
+  let list = Object.entries(listObject).reverse();
+  //console.log(list);
+  list.forEach((data) => {
+    let [key, item] = data;
+    let value = parseFloat(item['4. close']);
+    if (value < (min?.item?.['4. close'] || Infinity)) {
+      if (min && max) {
+        bestProfitCombinations.push({ min, max });
+      }
+      min = { item, key };
+      max = null;
+    } else if (value > (max?.item?.['4. close'] || -Infinity)) {
+      max = { item, key };
+    } else if (value < (max?.item?.['4. close'] || -Infinity)) {
+      if (min && max) {
+        bestProfitCombinations.push({ min, max });
+      }
+      min = { item, key };
+      max = null;
+    }
+  });
+  console.log(bestProfitCombinations);
+  let bestProfit = bestProfitCombinations.reduce(
+    (acc, item) => {
+      let howManyCoinsIbought = amount / parseFloat(item.min.item['4. close']);
 
-export { getClosingPrices,calculateCurInvestment, calculateInvestmentOnDate, SetDateMaxLimit }
+      let profit =
+        parseFloat(item.max.item['4. close']) * howManyCoinsIbought - amount;
+      if (profit > acc.value) {
+        acc = {
+          value: profit,
+          buyDate: item.min.key,
+          sellDate: item.max.key,
+          buyPrice: item.min.item['4. close'],
+          sellPrice: item.max.item['4. close'],
+        };
+      }
+      return acc;
+    },
+    { value: 0, buyDate: null, sellDate: null },
+  );
+  return bestProfit;
+  // {
+  //   value: 222,
+  //   buyDate: '2021-01-01',
+  //   sellDate: '2021-01-02',
+  // };
+}
+
+function calculateBuyAndKeep(StockData, amount) {
+  let listObject = StockData['Time Series (Daily)'];
+  let list = Object.entries(listObject).reverse();
+  let first = list[0];
+  let last = list[list.length - 1];
+
+  let howManyCoinsIbought = amount / parseFloat(first[1]['4. close']);
+
+  let buyAndKeep = {
+    buyDate: first[0],
+    sellDate: last[0],
+    value: parseFloat(last[1]['4. close']) * howManyCoinsIbought - amount,
+    buyPrice: first[1]['4. close'],
+    sellPrice: last[1]['4. close'],
+  };
+  return buyAndKeep;
+}
+
+function buyOnHigh(StockData, amount) {
+  let listObject = StockData['Time Series (Daily)'];
+  let list = Object.entries(listObject).reverse();
+  let first = list[0];
+  list.forEach((data) => {
+    let [key, item] = data;
+    let value = parseFloat(item['4. close']);
+    if (value > first[1]['4. close']) {
+      first = data;
+    }
+  });
+  let today = list[list.length - 1];
+
+  let howManyCoinsIbought = amount / parseFloat(first[1]['4. close']);
+
+  let result = {
+    buyDate: first[0],
+    sellDate: today[0],
+    value: parseFloat(today[1]['4. close']) * howManyCoinsIbought - amount,
+    buyPrice: first[1]['4. close'],
+    sellPrice: today[1]['4. close'],
+  };
+  return result;
+}
+
+export {
+  calculateCurInvestment,
+  calculateInvestmentOnDate,
+  calculateInvestmentReturn,
+  SetDateMaxLimit,
+  calculateBestProfit,
+  calculateBuyAndKeep,
+  buyOnHigh,
+};
