@@ -64,6 +64,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 19.6px */
+  height: 77px;
 }
 .content .card-2 {
   border-radius: 10px;
@@ -100,4 +101,5 @@
 
 .chart-placeholder {
   position: relative;
+  height: 146px;
 }
