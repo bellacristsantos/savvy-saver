@@ -42,18 +42,20 @@
 .content .card-2,
 .content .card-3 {
   display: flex;
-  padding: 30px 36px;
+  padding: 60px 10px;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: 28px;
   border-radius: 10px;
   border: 1px solid #fff;
 }
+
 
 .content .card {
   border-radius: 10px;
   border: 1px solid #fff;
   background-color: #4407bf;
+  margin-left: 10px;
 }
 
 .card-description {

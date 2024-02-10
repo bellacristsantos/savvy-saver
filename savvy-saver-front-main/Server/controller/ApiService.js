@@ -1,5 +1,5 @@
 exports.fetchStockData = async (company) => {
-  const API_KEY = '7K5W3OSOXZTYJGPH';
+  const API_KEY = '';
   const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${company}&outputsize=full&apikey=${API_KEY}`;
 
   try {

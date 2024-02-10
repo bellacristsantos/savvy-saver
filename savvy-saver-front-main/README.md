@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Savvy Saver  ⚡
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
 
-## Available Scripts
+![image](../savvy-saver-front-main/src/assets/Savvy-Saver01.png)
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
+![image](../savvy-saver-front-main/src/assets/Savvy-Saver03.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](../savvy-saver-front-main/src/assets/Savvy-Saver04.png)
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](../savvy-saver-front-main/src/assets/Savvy-Saver05.png)
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](../savvy-saver-front-main/src/assets/Slate-Money-on-Apple-Podcasts.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## :bulb: Development Process
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+SavvySaver is a learning platform with the goal of making financial knowledge available for beginners. The platform features a time travel feature that enables users to see how much they could earn if they had invested a specific amount on a chosen date and company. It also includes functionalities such as details about investment options and a "Learn More" section that allows users to explore a list of podcasts and be redirected to listen and learn more about investments.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The team used Trello and Gitflow to ensure that each member was working on one feature, avoiding merge conflicts, and delivering high-quality code in a reasonable amount of time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+My role in this project was related to UX/UI Design, contributing to frontend development using React and Vanilla CSS, making the application responsive, and developing the "Learn More" section using GraphQL and Apollo to connect with the podcast API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br />
 
-## Learn More
+## :gear: Tech Stack
+<br />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Trello, Figma, React, CSS, Node.js, Koa, Chart.js, MongoDB, GraphQL, Apollo, Alpha Vantage, and Taddy APIs.
 
-### Code Splitting
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Getting started
+<br />
 
-### Analyzing the Bundle Size
+### 1. Install dependencies
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  Requirements
+   * Obtain MongoDB URI from MongoDB Atlas
+   ```
+       1.1 Go to the MongoDB Atlas website: https://account.mongodb.com/account/login
+       1.2 Create a new project.
+       1.3 Create a new cluster within the project.
+       1.4 Start the cluster.
+       1.5 Obtain the MongoDB URI from the cluster settings.
+   ```
 
-### Making a Progressive Web App
+   * Get your Alpha Vantage API Key, follow the instructions on their website: https://www.alphavantage.co/support/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   * Get your Taddy API Key, follow the instructions on their website: https://taddy.org/developers/intro-to-taddy-graphql-api
 
-### Advanced Configuration
+### 2. Clone the repository
+```
+  git clone git@github.com:bellacristsantos/savvy-saver.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  * navigate to the project folder:
+    cd savvy-saverV1/savvy-saver-front-main
+```
 
-### Deployment
+### 3. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  ```
+    npm install
+  ```
 
-### `npm run build` fails to minify
+### 4. Configure your environment
+```
+    # 1. Obtain a API Key from Alpha Vantage API and replace API_KEY in server/controller/ApiService.js with your API_KEY.
+    # 2. Obtain a User ID and an API Key from Taddy API and replace API_KEY in server/controller/ApiService.js with your X-USER-ID and X-API-KEY.
+    # 3. Obtain a MongoDB URI from MongoDB Atlas and replace MONGODB_URI in src/apollo.js with your URI.
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 5. Run the project
+```
+  * Starts the client
+    npm start
+
+  * Starts the server
+    node server.js
+  ```
+
+

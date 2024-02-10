@@ -19,6 +19,7 @@ import {
 } from '../../utilities/timeTravelUtil';
 import LineChart from '../Chart/LineChart';
 import dayjs from 'dayjs';
+import handleSearch from './handleSearch';
 
 const TimeTravel = ({ setInvestmentOptions }) => {
   const [ChartData, setChartData] = useState(null);
@@ -66,9 +67,9 @@ const TimeTravel = ({ setInvestmentOptions }) => {
     setShowModal(true);
   }
 
-  const handleSearch = () => {
-    //handleSearch logic
-  };
+  // const handleSearch = () => {
+  //   //handleSearch logic
+  // };
 
   const handleIconClick = () => {
     setDropdownVisible(!dropdownVisible);
