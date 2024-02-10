@@ -45,7 +45,7 @@ Trello, Figma, React, CSS, Node.js, Koa, Chart.js, MongoDB, GraphQL, Apollo, Alp
 ## Getting started
 <br />
 
-### 1. Install dependencies
+### 1. Obtain API Keys
 <br />
 
   Requirements
